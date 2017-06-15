@@ -198,7 +198,11 @@ public class SolutionIT {
     // Step 7
     @Test
     public void loggedIn_clickLogOutMenu() {
-        // TODO
+        logIn(true);
+        wait.until(presenceOfElementLocated(By.id(logOutMenuId)));
+        driver.findElement(By.id(logOutMenuId)).click();
+        assertTitleEquals("whipbird: log out");
+        assertUrlEquals("http://whipbird.mattcalthrop.com/#!/logout");
     }
 
     // Step 8

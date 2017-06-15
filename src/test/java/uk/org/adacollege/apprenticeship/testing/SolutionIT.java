@@ -111,7 +111,6 @@ public class SolutionIT {
     }
 
     private static void assertElementTextEquals(By selector, String expectedText) {
-        // TODO: test this method
         Boolean result = wait.until(new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver webDriver) { return driver.findElement(selector).getText().equals(expectedText); }
         });
@@ -220,7 +219,19 @@ public class SolutionIT {
     // Step 8
     @Test
     public void loggedIn_addNewWhipbird() {
-        // TODO
+        logIn(true);
+        deleteAllWhipbirds();
+        assertElementPresent("no-whipbirds-saved");
+        wait.until(presenceOfElementLocated(By.id(whipbirdNameFieldId)));
+        driver.findElement(By.id(whipbirdNameFieldId)).sendKeys("Geraldine");
+        wait.until(presenceOfElementLocated(By.id(whipbirdAgeFieldId)));
+        driver.findElement(By.id(whipbirdAgeFieldId)).sendKeys("52");
+        wait.until(presenceOfElementLocated(By.id(newWhipbirdButtonId)));
+        driver.findElement(By.id(newWhipbirdButtonId)).click();
+
+        // check the whipbird has been added
+        wait.until(presenceOfElementLocated(By.id("whipbird-name-0")));
+        assertElementTextEquals(By.id("whipbird-name-0"), "Geraldine");
     }
 
     // Step 9

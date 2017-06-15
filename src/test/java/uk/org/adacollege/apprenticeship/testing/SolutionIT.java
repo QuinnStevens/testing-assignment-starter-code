@@ -125,6 +125,15 @@ public class SolutionIT {
         }
     }
 
+    private static void addNewWhipbird() {
+        wait.until(presenceOfElementLocated(By.id(whipbirdNameFieldId)));
+        driver.findElement(By.id(whipbirdNameFieldId)).sendKeys("Geraldine");
+        wait.until(presenceOfElementLocated(By.id(whipbirdAgeFieldId)));
+        driver.findElement(By.id(whipbirdAgeFieldId)).sendKeys("52");
+        wait.until(presenceOfElementLocated(By.id(newWhipbirdButtonId)));
+        driver.findElement(By.id(newWhipbirdButtonId)).click();
+    }
+
     // ========= SCAFFOLDING =========
 
     @BeforeClass
@@ -222,12 +231,7 @@ public class SolutionIT {
         logIn(true);
         deleteAllWhipbirds();
         assertElementPresent("no-whipbirds-saved");
-        wait.until(presenceOfElementLocated(By.id(whipbirdNameFieldId)));
-        driver.findElement(By.id(whipbirdNameFieldId)).sendKeys("Geraldine");
-        wait.until(presenceOfElementLocated(By.id(whipbirdAgeFieldId)));
-        driver.findElement(By.id(whipbirdAgeFieldId)).sendKeys("52");
-        wait.until(presenceOfElementLocated(By.id(newWhipbirdButtonId)));
-        driver.findElement(By.id(newWhipbirdButtonId)).click();
+        addNewWhipbird();
 
         // check the whipbird has been added
         wait.until(presenceOfElementLocated(By.id("whipbird-name-0")));

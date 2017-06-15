@@ -125,11 +125,11 @@ public class SolutionIT {
         }
     }
 
-    private static void addNewWhipbird() {
+    private static void addNewWhipbird(String name, String age) {
         wait.until(presenceOfElementLocated(By.id(whipbirdNameFieldId)));
-        driver.findElement(By.id(whipbirdNameFieldId)).sendKeys("Geraldine");
+        driver.findElement(By.id(whipbirdNameFieldId)).sendKeys(name);
         wait.until(presenceOfElementLocated(By.id(whipbirdAgeFieldId)));
-        driver.findElement(By.id(whipbirdAgeFieldId)).sendKeys("52");
+        driver.findElement(By.id(whipbirdAgeFieldId)).sendKeys(age);
         wait.until(presenceOfElementLocated(By.id(newWhipbirdButtonId)));
         driver.findElement(By.id(newWhipbirdButtonId)).click();
     }
@@ -228,14 +228,19 @@ public class SolutionIT {
     // Step 8
     @Test
     public void loggedIn_addNewWhipbird() {
+        // get to start state
         logIn(true);
         deleteAllWhipbirds();
         assertElementPresent("no-whipbirds-saved");
-        addNewWhipbird();
+
+        // create whipbird
+        String whipbirdName = "Geraldine";
+        String whipbirdAge = "52";
+        addNewWhipbird(whipbirdName, whipbirdAge);
 
         // check the whipbird has been added
         wait.until(presenceOfElementLocated(By.id("whipbird-name-0")));
-        assertElementTextEquals(By.id("whipbird-name-0"), "Geraldine");
+        assertElementTextEquals(By.id("whipbird-name-0"), whipbirdName);
     }
 
     // Step 9

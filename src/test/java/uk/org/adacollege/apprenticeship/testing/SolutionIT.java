@@ -280,15 +280,12 @@ public class SolutionIT {
         // create whipbird
         addNewWhipbird(whipbirdName, whipbirdAge);
 
-        // check whipbird has been added
-        wait.until(presenceOfElementLocated(By.id("whipbird-name-0")));
-        assertElementTextEquals(By.id("whipbird-name-0"), whipbirdName);
-
         // delete whipbird
         wait.until(presenceOfElementLocated(By.id("delete-whipbird-button-0")));
         driver.findElement(By.id("delete-whipbird-button-0")).click();
 
         // check whipbird has been deleted
+        assertElementTextEquals(By.id(popupMessageId), "Whipbird deleted: " + whipbirdName);
         assertElementPresent("no-whipbirds-saved");
 
     }

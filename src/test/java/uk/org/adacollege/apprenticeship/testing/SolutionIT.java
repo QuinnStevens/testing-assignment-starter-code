@@ -10,6 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.List;
 import java.util.function.Function;
 
 public class SolutionIT {
@@ -112,6 +113,14 @@ public class SolutionIT {
             public Boolean apply(WebDriver webDriver) { return driver.findElement(selector).getText().equals(expectedText); }
         });
         assertTrue(result);
+    }
+
+    private static void deleteAllWhipbirds() {
+        List<WebElement> whipbirds = driver.findElements(By.className("delete-whipbird-button"));
+
+        for (WebElement whipbird : whipbirds) {
+            whipbird.click();
+        }
     }
 
     // ========= SCAFFOLDING =========

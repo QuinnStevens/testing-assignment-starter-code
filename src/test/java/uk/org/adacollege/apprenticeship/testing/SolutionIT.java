@@ -148,7 +148,8 @@ public class SolutionIT {
     public void notLoggedIn_checkMenus() {
         assertElementPresent(logInMenuId);
         assertElementNotPresent(logOutMenuId);
-        // TODO: complete for all other menus
+        assertElementPresent(aboutMenuId);
+        assertElementNotPresent(myWhipbirdsMenuId);
     }
 
     // Step 2

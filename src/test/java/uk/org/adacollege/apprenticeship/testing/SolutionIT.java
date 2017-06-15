@@ -107,12 +107,11 @@ public class SolutionIT {
     }
 
     private static void assertElementTextEquals(By selector, String expectedText) {
-        // TODO: implement this method
-        // - use assertTitleEquals() as an example pattern to follow
-        // - but instead of return driver.getTitle().equals(expectedTitle)
-        //   call driver.findElement() with the selector provided
-        //   and then get the text from that element
-        //   and then check that it equals the expected text
+        // TODO: test this method
+        Boolean result = wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver webDriver) { return driver.findElement(By.id(selector)).equals(expectedText); }
+        });
+        assertTrue(result);
     }
 
     // ========= SCAFFOLDING =========

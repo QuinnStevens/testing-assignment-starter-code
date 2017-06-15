@@ -191,6 +191,7 @@ public class SolutionIT {
         driver.findElement(By.id(aboutMenuId)).click();
         assertTitleEquals("whipbird: about");
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/about");
+        assertElementTextEquals(By.tagName("h4"), "About this app");
     }
 
     // Step 4

@@ -169,6 +169,7 @@ public class SolutionIT {
     // Step 1
     @Test
     public void notLoggedIn_checkMenus() {
+        // check menu items
         assertElementPresent(logInMenuId);
         assertElementNotPresent(logOutMenuId);
         assertElementPresent(aboutMenuId);
@@ -178,6 +179,7 @@ public class SolutionIT {
     // Step 2
     @Test
     public void notLoggedIn_checkCurrentPage() {
+        // check url, title, header, footer (right)
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/login");
         assertTitleEquals("whipbird: log in");
         assertElementTextEquals(By.tagName("h4"), "Log in");
@@ -187,8 +189,11 @@ public class SolutionIT {
     // Step 3
     @Test
     public void notLoggedIn_clickAboutMenu() {
+        // make sure about button is there
         wait.until(presenceOfElementLocated(By.id(aboutMenuId)));
+        // click it
         driver.findElement(By.id(aboutMenuId)).click();
+        // check url, title, header
         assertTitleEquals("whipbird: about");
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/about");
         assertElementTextEquals(By.tagName("h4"), "About this app");
@@ -216,6 +221,7 @@ public class SolutionIT {
     @Test
     public void loggedIn_checkMenus() {
         logIn(true);
+        // check menu items
         assertElementPresent(myWhipbirdsMenuId);
         assertElementPresent(aboutMenuId);
         assertElementPresent(logOutMenuId);
@@ -226,8 +232,12 @@ public class SolutionIT {
     @Test
     public void loggedIn_checkCurrentPage() {
         logIn(true);
+        // check url, title
         assertTitleEquals("whipbird: my whipbirds");
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/my-whipbirds");
+        // check heading, footer
+        assertElementTextEquals(By.tagName("h4"), "Current whipbirds for Quinn Stevens");
+        assertElementTextEquals(By.id(footerRightId), "Quinn Stevens");
     }
 
     // Step 7

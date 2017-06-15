@@ -244,10 +244,13 @@ public class SolutionIT {
     @Test
     public void loggedIn_clickLogOutMenu() {
         logIn(true);
+        // click logout button
         wait.until(presenceOfElementLocated(By.id(logOutMenuId)));
         driver.findElement(By.id(logOutMenuId)).click();
+        // check title, url, header
         assertTitleEquals("whipbird: log out");
         assertUrlEquals("http://whipbird.mattcalthrop.com/#!/logout");
+        assertElementTextEquals(By.tagName("h4"), "Log out");
     }
 
     // Step 8

@@ -109,7 +109,7 @@ public class SolutionIT {
     private static void assertElementTextEquals(By selector, String expectedText) {
         // TODO: test this method
         Boolean result = wait.until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver webDriver) { return driver.findElement(selector).equals(expectedText); }
+            public Boolean apply(WebDriver webDriver) { return driver.findElement(selector).getText().equals(expectedText); }
         });
         assertTrue(result);
     }

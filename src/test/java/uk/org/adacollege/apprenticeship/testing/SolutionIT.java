@@ -100,9 +100,10 @@ public class SolutionIT {
     }
 
     private static void assertUrlEquals(String expectedUrl) {
-        // TODO: implement this method
-        // - use assertTitleEquals() as an example pattern to follow
-        // - search the web for how to find the current URL with Selenium
+        Boolean result = wait.until(new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver webDriver) { return driver.getCurrentUrl().equals(expectedUrl); }
+        });
+        assertTrue(result);
     }
 
     private static void assertElementTextEquals(By selector, String expectedText) {
@@ -155,7 +156,8 @@ public class SolutionIT {
     // Step 2
     @Test
     public void notLoggedIn_checkCurrentPage() {
-        // TODO
+        assertUrlEquals("http://whipbird.mattcalthrop.com/#!/login");
+        assertTitleEquals("whipbird: log in");
     }
 
     // Step 3

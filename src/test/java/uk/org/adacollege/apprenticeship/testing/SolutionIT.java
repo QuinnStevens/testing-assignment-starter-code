@@ -30,6 +30,9 @@ public class SolutionIT {
     private static String logInButtonId = "login-button";
     private static String logOutButtonId = "log-out-button";
     private static String popupMessageId = "popup-message";
+    private static String whipbirdNameFieldId = "name";
+    private static String whipbirdAgeFieldId = "age";
+    private static String newWhipbirdButtonId = "add-new-whipbird-button";
 
     // ========= UTILITY METHODS =========
 

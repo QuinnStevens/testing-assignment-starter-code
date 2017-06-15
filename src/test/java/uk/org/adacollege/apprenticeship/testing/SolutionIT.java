@@ -162,7 +162,6 @@ public class SolutionIT {
     // Step 3
     @Test
     public void notLoggedIn_clickAboutMenu() {
-        // TODO
         wait.until(presenceOfElementLocated(By.id(aboutMenuId)));
         driver.findElement(By.id(aboutMenuId)).click();
         assertTitleEquals("whipbird: about");
@@ -172,7 +171,8 @@ public class SolutionIT {
     // Step 4
     @Test
     public void notLoggedIn_logInWithIncorrectCredentials() {
-        // TODO
+        logIn(false);
+        assertElementPresent(popupMessageId);
     }
 
     // --------- WHEN LOGGED IN ---------

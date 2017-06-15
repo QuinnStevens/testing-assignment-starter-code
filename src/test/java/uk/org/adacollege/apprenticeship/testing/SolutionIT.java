@@ -163,6 +163,10 @@ public class SolutionIT {
     @Test
     public void notLoggedIn_clickAboutMenu() {
         // TODO
+        wait.until(presenceOfElementLocated(By.id(aboutMenuId)));
+        driver.findElement(By.id(aboutMenuId)).click();
+        assertTitleEquals("whipbird: about");
+        assertUrlEquals("http://whipbird.mattcalthrop.com/#!/about");
     }
 
     // Step 4

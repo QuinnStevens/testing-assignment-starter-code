@@ -265,7 +265,7 @@ public class SolutionIT {
         addNewWhipbird(whipbirdName, whipbirdAge);
 
         // check the whipbird has been added
-        wait.until(presenceOfElementLocated(By.id("whipbird-name-0")));
+        assertElementTextEquals(By.id(popupMessageId), "Whipbird added: " + whipbirdName);
         assertElementTextEquals(By.id("whipbird-name-0"), whipbirdName);
     }
 

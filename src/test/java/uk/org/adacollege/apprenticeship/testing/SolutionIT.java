@@ -33,6 +33,8 @@ public class SolutionIT {
     private static String whipbirdNameFieldId = "name";
     private static String whipbirdAgeFieldId = "age";
     private static String newWhipbirdButtonId = "add-new-whipbird-button";
+    private static String whipbirdName = "Geraldine";
+    private static String whipbirdAge = "52";
 
     // ========= UTILITY METHODS =========
 
@@ -234,8 +236,6 @@ public class SolutionIT {
         assertElementPresent("no-whipbirds-saved");
 
         // create whipbird
-        String whipbirdName = "Geraldine";
-        String whipbirdAge = "52";
         addNewWhipbird(whipbirdName, whipbirdAge);
 
         // check the whipbird has been added
@@ -246,6 +246,24 @@ public class SolutionIT {
     // Step 9
     @Test
     public void loggedIn_addNewWhipbirdThenDeleteIt() {
-        // TODO
+        // get to start state
+        logIn(true);
+        deleteAllWhipbirds();
+        assertElementPresent("no-whipbirds-saved");
+
+        // create whipbird
+        addNewWhipbird(whipbirdName, whipbirdAge);
+
+        // check whipbird has been added
+        wait.until(presenceOfElementLocated(By.id("whipbird-name-0")));
+        assertElementTextEquals(By.id("whipbird-name-0"), whipbirdName);
+
+        // delete whipbird
+        wait.until(presenceOfElementLocated(By.id("delete-whipbird-button-0")));
+        driver.findElement(By.id("delete-whipbird-button-0")).click();
+
+        // check whipbird has been deleted
+        assertElementPresent("no-whipbirds-saved");
+
     }
 }

@@ -190,7 +190,9 @@ public class SolutionIT {
     // Step 6
     @Test
     public void loggedIn_checkCurrentPage() {
-        // TODO
+        logIn(true);
+        assertTitleEquals("whipbird: my whipbirds");
+        assertUrlEquals("http://whipbird.mattcalthrop.com/#!/my-whipbirds");
     }
 
     // Step 7

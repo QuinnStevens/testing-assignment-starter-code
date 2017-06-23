@@ -108,14 +108,18 @@ public class SolutionIT {
 
     private static void assertUrlEquals(String expectedUrl) {
         Boolean result = wait.until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver webDriver) { return driver.getCurrentUrl().equals(expectedUrl); }
+            public Boolean apply(WebDriver webDriver) {
+                return driver.getCurrentUrl().equals(expectedUrl);
+            }
         });
         assertTrue(result);
     }
 
     private static void assertElementTextEquals(By selector, String expectedText) {
         Boolean result = wait.until(new ExpectedCondition<Boolean>() {
-            public Boolean apply(WebDriver webDriver) { return driver.findElement(selector).getText().equals(expectedText); }
+            public Boolean apply(WebDriver webDriver) {
+                return driver.findElement(selector).getText().equals(expectedText);
+            }
         });
         assertTrue(result);
     }
